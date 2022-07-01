@@ -33,11 +33,13 @@ margin-bottom: 20px;
 
 export const List = styled.ul`
 display: flex;
+margin: -15px;
 `;
 
 export const Item = styled.li`
-margin-right: 15px;
-outline: 1px solid red;
+margin: 15px;
+flex-basis: calc(100% / 3 - 30px);
+
 
 &:last-child {
     margin-right: 0;

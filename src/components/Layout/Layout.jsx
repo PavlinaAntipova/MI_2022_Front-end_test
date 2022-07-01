@@ -6,24 +6,28 @@ import { ReactComponent as Logo } from '../../images/icons/logo.svg';
 import VotingImg from '../../images/vote-table/vote-table.png';
 import BreedsImg from '../../images/pet-breeds/pet-breeds.png';
 import GalleryImg from '../../images/images-search/images-search.png';
+import { Description, Header, Item, List, StyledLayout, Text, Title } from "./Layout.styled";
 
 
 
 export default function Layout() {
-    return <>
-        <header>
+    return <StyledLayout>
+        <Header>
             <Link to='/'><Logo /></Link>
-        </header>
+        </Header>
         <div>
-            <h1>Hi intern!</h1>
-            <p>Welcome to MI 2022 Front-end test</p>
-            <p>Lets start using The Cat API</p>
-            <ul>
-                <li><NavigationBtn path="/voting" text="Voting" img={VotingImg} /></li>
-                <li><NavigationBtn path="/breeds" text="Breeds" img={BreedsImg}/></li>
-                <li><NavigationBtn path="/gallery" text="Gallery" img={GalleryImg}/></li>
-            </ul>
+            <Title>Hi intern!</Title>
+            <Description>Welcome to MI 2022 Front-end test</Description>
+            <Text>Lets start using The Cat API</Text>
+            <List>
+                <Item><NavigationBtn path="/voting" text="Voting" img={VotingImg} /></Item>
+                <Item><NavigationBtn path="/breeds" text="Breeds" img={BreedsImg}/></Item>
+                <Item><NavigationBtn path="/gallery" text="Gallery" img={GalleryImg}/></Item>
+            </List>
         </div>
-        <Outlet/>
-    </>
+        <div>
+             <Outlet/>
+        </div>
+       
+    </StyledLayout>
 }

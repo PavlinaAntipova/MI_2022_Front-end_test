@@ -20,9 +20,9 @@ export default function Layout() {
             <Description>Welcome to MI 2022 Front-end test</Description>
             <Text>Lets start using The Cat API</Text>
             <List>
-                <Item><NavigationBtn path="/voting" text="Voting" img={VotingImg} /></Item>
-                <Item><NavigationBtn path="/breeds" text="Breeds" img={BreedsImg}/></Item>
-                <Item><NavigationBtn path="/gallery" text="Gallery" img={GalleryImg}/></Item>
+                <Item><NavigationBtn path="/voting" text="Voting" img={{ path: VotingImg, width: 100, height: 125 }} bgColor="#B4B7FF" /></Item>
+                <Item><NavigationBtn path="/breeds" text="Breeds" img={{ path: BreedsImg, width: 117, height: 163 }} bgColor="#97EAB9"/></Item>
+                <Item><NavigationBtn path="/gallery" text="Gallery" img={{ path: GalleryImg, width: 112, height: 190 }} bgColor="#FFD280"/></Item>
             </List>
         </div>
         <div>

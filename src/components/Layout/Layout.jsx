@@ -8,9 +8,10 @@ import { ReactComponent as BackIcon } from '../../images/icons/back.svg';
 import VotingImg from '../../images/vote-table/vote-table.png';
 import BreedsImg from '../../images/pet-breeds/pet-breeds.png';
 import GalleryImg from '../../images/images-search/images-search.png';
-import { Description, Header, Item, List, StyledLayout, Text, Title, IntroBox, ContentBox, MainContent, BackBtnBox } from "./Layout.styled";
+import { Description, Header, Item, List, StyledLayout, Text, Title, IntroBox, ContentBox, MainContent, BackBtnBox, BackBtn, CurrentLocation } from "./Layout.styled";
 import SearchBar from "components/SearchBar/SearchBar";
 import { useEffect } from "react";
+import { theme } from "helper/theme";
 
 
 
@@ -41,8 +42,10 @@ export default function Layout() {
         {location?.pathname !== "/" && <SearchBar />}
             <ContentBox location={location}>
                 {location?.pathname !== "/" && <BackBtnBox>
-                    <button onClick={() => { history.back() } type="button"><BackIcon/></button>
-                    <span>{location?.pathname.slice(1)}</span>
+                    <BackBtn onClick={() => { history.back() }} type="button" style={{
+    bgColor: { static: theme.secondaryAccentColor, active: theme.mainAccentColor }, svgColor: {static: theme.mainAccentColor, active: "#fff"}
+}}><BackIcon/></BackBtn>
+                    <CurrentLocation>{location?.pathname.slice(1)}</CurrentLocation>
                 </BackBtnBox>}
                 
             <Outlet/>
@@ -51,7 +54,5 @@ export default function Layout() {
 
     </StyledLayout>
         
-        
-
     </>
 }

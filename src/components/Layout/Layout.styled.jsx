@@ -1,3 +1,4 @@
+import { BasicBtn } from "components/Btn/Btn.styled";
 import { BasicText } from "helper/Common.styled";
 import styled from "styled-components";
 
@@ -52,6 +53,48 @@ flex-basis: calc(100% / 3 - 30px);
     margin-right: 0;
 }
 
+`;
+
+export const ContentBox = styled.div`
+${props => {
+    if (props.location.pathname === "/") {
+            return `height: 840px;
+            background-color: ${props.theme.secondaryAccentColor};
+            `;
+    } else {
+        return `height: 100%;
+            background-color: #fff;
+            `;
+        }
+}
+    };
+width: 680px;
+border-radius: ${props => props.theme.borderRadiusMax};
+`;
+
+export const MainContent = styled.div`
+
+`;
+
+export const BackBtnBox = styled.div`
+
+`;
+
+export const BackBtn = styled(BasicBtn)`
+margin-right: 10px;
+`;
+
+export const CurrentLocation = styled.span`
+display: inline-block;
+padding: 7px 30px;
+background: ${props => props.theme.mainAccentColor};
+border-radius: ${props => props.theme.borderRadiusMin};
+font-weight: 500;
+font-size: 20px;
+line-height: 1.5em;
+letter-spacing: 2px;
+color: #FFFFFF;
+text-transform: uppercase;
 `;
 
 

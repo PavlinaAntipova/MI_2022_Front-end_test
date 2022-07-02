@@ -4,14 +4,18 @@ import { ReactComponent as SearchIcon } from '../../images/icons/search.svg';
 import { ReactComponent as LikeIcon } from '../../images/icons/like.svg';
 import { ReactComponent as FavoriteIcon } from '../../images/icons/fav.svg';
 import { ReactComponent as DislikehIcon } from '../../images/icons/dislike.svg';
-import { Btn, Input, Item, Link, List, SearchBox, StyledSearchBar } from "./SearchBar.styled";
+import { Btn, Input, Item, Link, List, SearchBox, StyledBtn, StyledSearchBar } from "./SearchBar.styled";
+import { theme } from "helper/theme";
+import { BasicBtn } from "components/Btn/Btn.styled";
 
 export default function SearchBar() {
 
     return <StyledSearchBar>
         <SearchBox>
             <Input type="text" placeholder="Search for breeds by name"/>
-            <Btn type="submit"><SearchIcon width="20" height="20"/></Btn>
+            <StyledBtn style={{
+    bgColor: { static: theme.secondaryAccentColor, active: theme.mainAccentColor }, svgColor: {static: theme.mainAccentColor, active: "#fff"}
+}} type="submit"><SearchIcon width="20" height="20"/></StyledBtn>
     </SearchBox>
      <List>
             <Item><Link to="/likes"><LikeIcon width="30" height="30"/></Link></Item>
@@ -20,3 +24,5 @@ export default function SearchBar() {
         </List>
         </StyledSearchBar>
 }
+
+

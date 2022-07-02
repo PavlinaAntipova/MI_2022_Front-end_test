@@ -1,3 +1,5 @@
+
+import { BasicBtn } from "components/Btn/Btn.styled";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -79,27 +81,10 @@ padding: 15px;
 `;
 
 
-export const Btn = styled.button`
+export const StyledBtn = styled(BasicBtn)`
 position: absolute;
 right: 10px;
 top: 50%;
 transform: translateY(-50%);
-padding: 10px;
-border-radius: ${props => props.theme.borderRadiusMin};
-background-color: ${props => props.theme.secondaryAccentColor};
-border: none;
-
-& svg {
-        fill: ${props => props.theme.mainAccentColor};
-    }
-
-
-&:hover, &:focus {
-    background-color: ${props => props.theme.mainAccentColor};
-
-    & svg {
-        fill: #fff;
-    }
-}
 `;
 

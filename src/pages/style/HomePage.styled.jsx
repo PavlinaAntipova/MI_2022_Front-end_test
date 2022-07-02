@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Img = styled.img`
-right: 0;
 position: absolute;
+right: 0;
 `;
 
 export const ContentBox = styled.div`

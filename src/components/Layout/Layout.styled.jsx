@@ -2,14 +2,21 @@ import { BasicText } from "helper/Common.styled";
 import styled from "styled-components";
 
 export const StyledLayout = styled.div`
-position: sticky;
-width: 45%;
-padding-left: 145px;
-
+padding: 30px 30px 30px 145px;
+display: flex;
 `;
 
+export const IntroBox = styled.div`
+position: sticky;
+top: 30px;
+width: 40%;
+margin-right: 135px;
+height: 100%;
+`;
+
+
+
 export const Header = styled.header`
-padding-top: 30px;
 margin-bottom: 80px;
 `;
 
@@ -46,4 +53,12 @@ flex-basis: calc(100% / 3 - 30px);
 }
 
 `;
+
+
+
+
+
+
+
+
 

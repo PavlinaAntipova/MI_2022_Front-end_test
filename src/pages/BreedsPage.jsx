@@ -3,6 +3,7 @@ import { theme } from "helper/theme";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Circles } from "react-loader-spinner";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { getBreeds } from "services/catsApi";
 
 const limits = [
@@ -16,6 +17,7 @@ export default function BreedsPage() {
     const [breeds, setBreeds] = useState([]);
     const [optionsBreeds, setOptionsBreeds] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const location = useLocation().pathname;
 
     useEffect(() => {
         setIsLoading(true);
@@ -27,11 +29,8 @@ export default function BreedsPage() {
     }, []);
     
     return (<>
-        {isLoading ? <Circles height="80" width="80" color={theme.mainAccentColor} ariaLabel='loading'
-        /> : <>
-            <ul>
-                {breeds.map(item => <li key={item.id}><img src={item?.image?.url} alt="" /></li>)}
-            </ul>
-        </>}
+        { location === "/breeds" ? <> {isLoading ? <Circles height="80" width="80" color={theme.mainAccentColor} ariaLabel='loading'/> : <ul>
+            {breeds.map(item => <li key={item.id}><Link to={item.id} state={{...item}}><img src={item?.image?.url} alt="" /></Link></li>)}
+            </ul> } </> : <Outlet/>}
             </>);
 }

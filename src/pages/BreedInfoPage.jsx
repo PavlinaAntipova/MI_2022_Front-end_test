@@ -25,10 +25,10 @@ export default function BreedInfoPage() {
 
     return <>
 
-        <Swiper slidesPerView={1} modules={[Pagination, A11y, Mousewheel, Keyboard]} pagination={{ clickable: true, width: '40%'}} mousewheel={true} keyboard={true} loop={true}>
+        <Swiper slidesPerView={1} modules={[Pagination, A11y, Mousewheel, Keyboard]} pagination={{ clickable: true}} mousewheel={true} keyboard={true} loop={true}>
             {images.map(item => <SwiperSlide key={item.id}>
                 <ImgBox>
-                    <Img src={item.url} alt={breed.name} />
+                    <Img src={item.url} alt={breed.name} width="640" height="360"/>
                 </ImgBox>
 
             </SwiperSlide>)}

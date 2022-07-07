@@ -11,10 +11,6 @@ overflow: hidden;
     height: 100%;
 }
 
-& p {
-    padding-left: 20px;
-}
-
 // 10n + 1
  ${props => {
         const elems = props.data;

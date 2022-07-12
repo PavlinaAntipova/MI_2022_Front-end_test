@@ -7,3 +7,10 @@ color: #1D1D1D;
 background-color: #E5E5E5;
 }
 
+
+[data-testid] {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}

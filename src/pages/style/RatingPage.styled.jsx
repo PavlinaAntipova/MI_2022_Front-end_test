@@ -8,4 +8,7 @@ color: ${props => props.theme.lightTextColor};
 font-size: 16px;
 line-height: 1.5em;
 `;
+
 export const Info = styled.ul`
+margin-top: 40px;
+`;

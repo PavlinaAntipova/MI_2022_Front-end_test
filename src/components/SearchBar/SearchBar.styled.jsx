@@ -1,14 +1,14 @@
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 import { BasicBtn } from "components/Btn/Btn.styled";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
 
 export const StyledSearchBar = styled.div`
 display: flex;
 margin-bottom: 10px;
 `;
 
-export const SearchBox = styled.form`
+export const SearchForm = styled.form`
 position: relative;
 width: 470px;
 margin-right: 10px;

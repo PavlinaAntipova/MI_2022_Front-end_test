@@ -20,24 +20,24 @@ export default function BreedInfoPage() {
     const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-        }).catch(err => {
-            console.log(err.message);
-            toast("🙀 Ooops, something went wrong! Try again.")
 
-        {isLoading ? <Loader/> : <>
     useEffect(() => {
         setIsLoading(true);
         getImgsByBreed(breed.id).then(data => {
             setImages(data);
-                    <Img src={item.url} alt={breed.name} width="640" height="360" loading="lazy"/>
+        }).catch(err => {
+            console.log(err.message);
+            toast("🙀 Ooops, something went wrong! Try again.")
+        }).finally(() => { setIsLoading(false) });
     }, []);
 
     return <>
+        {isLoading ? <Loader/> : <>
 
         <Swiper slidesPerView={1} modules={[Pagination, A11y, Mousewheel, Keyboard]} pagination={{ clickable: true}} mousewheel={true} keyboard={true} loop={true}>
             {images.map(item => <SwiperSlide key={item.id}>
                 <ImgBox>
-                    <Img src={item.url} alt={breed.name} width="640" height="360"/>
+                    <Img src={item.url} alt={breed.name} width="640" height="360" loading="lazy"/>
                 </ImgBox>
 
             </SwiperSlide>)}
@@ -45,8 +45,6 @@ export default function BreedInfoPage() {
 
         <InfoBox>
             <Name><nobr>{breed.name}</nobr></Name>
-            </>
-        }
             <Text>{breed.description}</Text>
             <List>
                 <Item><FeatureInfo><Feature>Temperament:</Feature><br/> {breed.temperament }</FeatureInfo></Item>
@@ -54,6 +52,8 @@ export default function BreedInfoPage() {
                 <Item><FeatureInfo><Feature>Weight:</Feature> {breed.weight.metric} kg</FeatureInfo></Item>
                 <Item><FeatureInfo><Feature>Life span:</Feature> {breed.life_span} years</FeatureInfo></Item>
             </List>
-        </InfoBox>
+            </InfoBox>
+            </>
+        }
     </>
  }

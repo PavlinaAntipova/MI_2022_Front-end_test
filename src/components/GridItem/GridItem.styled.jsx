@@ -1,25 +1,90 @@
 import styled from "styled-components";
 
 export const Item = styled.li`
+position: relative;
 background: #C4C4C4;
 border-radius: ${props => props.theme.borderRadiusMax};
 height: 140px;
 overflow: hidden;
+
+& button {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+background-color: #fff;
+border-radius: ${props => props.theme.borderRadiusMin};
+opacity: 0;
+
+}
+
+& div::before {
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background-color: rgba(255, 134, 142, 0.6);
+opacity: 0;
+}
+
+&:hover, &:focus {
+    & div::before, & button {
+        opacity: 1;
+    }
+}
+
+
+& p {
+position: absolute;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 3;
+padding: 5px 0;
+width: 90%;
+font-size: 16px;
+line-height: 1.5em;
+text-align: center;
+color: ${props => props.theme.mainAccentColor};
+background-color: #fff;
+border-radius: ${props => props.theme.borderRadiusMin};
+opacity: 0;
+}
+
+& a::before {
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background-color: rgba(255, 134, 142, 0.6);
+opacity: 0;
+}
+
+& a:hover, & a:focus {
+    &::before, & p {
+        opacity: 1;
+    }
+}
 
 & img {
     width: 100%;
     height: 100%;
 }
 
+
 // 10n + 1
  ${props => {
-        const elems = props.data;
-        const columns = 3;
-        const rows = Math.ceil(elems / columns);
-        const gridRow = rows + 1;
-        const rowsInBlock = 3;
-        const rowsInBlockGrid = rowsInBlock + 1;
-        const diffRows = gridRow / rowsInBlockGrid;
+
+        const diffRows = 6;
         const nElement = 1;
         const step = 10;
         const type = `${step}n + ${nElement}`;
@@ -43,20 +108,15 @@ overflow: hidden;
 
 // 10n + 5
 ${props => {
-        const elems = props.data;
-        const columns = 3;
-        const rows = Math.ceil(elems / columns);
-        const gridRow = rows + 1;
-        const rowsInBlock = 3;
-        const rowsInBlockGrid = rowsInBlock + 1;
-        const diffRows = gridRow / rowsInBlockGrid;
+
+        const diffRows = 6;
         const nElement = 5;
         const step = 10;
         const type = `${step}n + ${nElement}`;
         const initStart = 2;
         const initEnd = 4;
 
-        for (let i = nElement; i < props.data; i += step) {
+        for (let i = nElement; i <= props.data; i += step) {
            
             if (props.index === i) {
                 i === nElement ? props.gridRows[type][i] = { start: initStart, end: initEnd } : props.gridRows[type][i] = { start: props.gridRows[type][i - step].start + diffRows, end: props.gridRows[type][i - step].end + diffRows };
@@ -74,13 +134,7 @@ ${props => {
     
 // 10n + 8
      ${props => {
-        const elems = props.data;
-        const columns = 3;
-        const rows = Math.ceil(elems / columns);
-        const gridRow = rows + 1;
-        const rowsInBlock = 3;
-        const rowsInBlockGrid = rowsInBlock + 1;
-        const diffRows = gridRow / rowsInBlockGrid;
+        const diffRows = 6;
         const nElement = 8;
         const step = 10;
         const type = `${step}n + ${nElement}`;
@@ -104,13 +158,8 @@ ${props => {
     
 // 10n + 9
      ${props => {
-        const elems = props.data;
-        const columns = 3;
-        const rows = Math.ceil(elems / columns);
-        const gridRow = rows + 1;
-        const rowsInBlock = 3;
-        const rowsInBlockGrid = rowsInBlock + 1;
-        const diffRows = gridRow / rowsInBlockGrid;
+
+        const diffRows = 6;
         const nElement = 9;
         const step = 10;
         const type = `${step}n + ${nElement}`;
@@ -132,6 +181,7 @@ ${props => {
         }
     }}
     `;
+
 
 
 

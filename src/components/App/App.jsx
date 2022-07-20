@@ -1,7 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
 export const App = () => {
-  return (
+  const [searchQuery, setSearchQuery] = useState("");
+  const [breeds, setBreeds] = useState([]);
+
+  useEffect(() => {
+    getBreeds().then(setBreeds).catch(err => {
+            console.log(err.message);
+            toast("🙀 Ooops, something went wrong! Try again.");
+        })
+  }, []);
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />

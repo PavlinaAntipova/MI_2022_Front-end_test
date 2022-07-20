@@ -32,6 +32,33 @@ button {
     border: none;
 }
 
+.swiper-pagination {
+    bottom: -5px !important;
+    left: 50% !important;
+    transform: translate(-50%, 5%) !important;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    opacity: 1;
+}
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+background-color: #FBE0DC !important;
+border-radius: 10px;
+opacity: 1 !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #FF868E !important;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    width: 20% !important;
+}
 [data-testid] {
 position: absolute;
 top: 50%;

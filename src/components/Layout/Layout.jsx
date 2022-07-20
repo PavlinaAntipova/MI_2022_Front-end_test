@@ -1,6 +1,8 @@
-import NavigationBtn from "components/NavigationBtn";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { createBrowserHistory } from "history";
+
+import SearchBar from "components/SearchBar/SearchBar";
+import NavigationBtn from "components/NavigationBtn";
 
 import { ReactComponent as Logo } from '../../images/icons/logo.svg';
 import { ReactComponent as BackIcon } from '../../images/icons/back.svg';
@@ -8,16 +10,22 @@ import { ReactComponent as BackIcon } from '../../images/icons/back.svg';
 import VotingImg from '../../images/vote-table/vote-table.png';
 import BreedsImg from '../../images/pet-breeds/pet-breeds.png';
 import GalleryImg from '../../images/images-search/images-search.png';
+
 import { Description, Header, Item, List, StyledLayout, Text, Title, IntroBox, ContentBox, MainContent, BackBtnBox, BackBtn, CurrentLocation } from "./Layout.styled";
-import SearchBar from "components/SearchBar/SearchBar";
-import { useEffect } from "react";
+
 import { theme } from "helper/theme";
 
 
-
-
-export default function Layout() {
+export default function Layout({setSearchQuery}) {
     const location = useLocation();
+    const param = useParams();
+
+    const getLocation = () => {
+        const path = location?.pathname.slice(1);
+        const pathLength = path.length;
+        const idLength = param.breedId.length + 1;
+        return location?.pathname.slice(1, `${pathLength - idLength}`);
+    }
 
     let history = createBrowserHistory({ window });
    
@@ -39,13 +47,15 @@ export default function Layout() {
         </IntroBox>
 
         <MainContent>
-        {location?.pathname !== "/" && <SearchBar />}
+        {location?.pathname !== "/" && <SearchBar setSearchQuery={setSearchQuery} />}
             <ContentBox location={location}>
                 {location?.pathname !== "/" && <BackBtnBox>
-                    <BackBtn onClick={() => { history.back() }} type="button" style={{
-    bgColor: { static: theme.secondaryAccentColor, active: theme.mainAccentColor }, svgColor: {static: theme.mainAccentColor, active: "#fff"}
-}}><BackIcon/></BackBtn>
-                    <CurrentLocation>{location?.pathname.slice(1)}</CurrentLocation>
+                    <BackBtn onClick={() => { history.back() }} type="button" style={
+                        { bgColor: { static: theme.secondaryAccentColor, active: theme.mainAccentColor }, svgColor: { static: theme.mainAccentColor, active: "#fff" } }
+                    }><BackIcon /></BackBtn>
+                    <CurrentLocation location={param.breedId}>{param.breedId ? getLocation() : location?.pathname.slice(1)}</CurrentLocation>
+                    {param.breedId && <CurrentLocation>{param.breedId}</CurrentLocation>}
+                    
                 </BackBtnBox>}
                 
             <Outlet/>

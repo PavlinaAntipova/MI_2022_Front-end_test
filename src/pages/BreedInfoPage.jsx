@@ -20,6 +20,9 @@ export default function BreedInfoPage() {
     const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+        }).catch(err => {
+            console.log(err.message);
+            toast("🙀 Ooops, something went wrong! Try again.")
 
     useEffect(() => {
         setIsLoading(true);

@@ -9,11 +9,11 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'helper/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+<React.StrictMode>
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
+    <BrowserRouter basename='/MI_2022_Front-end_test/'>
       <App />
       </BrowserRouter>
       </ThemeProvider>
-  </React.StrictMode>
+</React.StrictMode>
 );

@@ -7,6 +7,30 @@ color: #1D1D1D;
 background-color: #E5E5E5;
 }
 
+ul, li, p, h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
 
 [data-testid] {
 position: absolute;

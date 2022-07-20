@@ -59,9 +59,10 @@ opacity: 1 !important;
 .swiper-pagination-fraction {
     width: 20% !important;
 }
+
 [data-testid] {
 position: absolute;
-top: 50%;
+top: 60%;
 left: 50%;
-transform: translate(-50%, -50%);
+transform: translate(-60%, -50%);
 }

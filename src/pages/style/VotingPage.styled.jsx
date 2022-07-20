@@ -6,6 +6,9 @@ margin-bottom: 52px;
 `;
 
 export const ImgBox = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
 width: 100%;
 height: 360px;
 overflow: hidden;
@@ -98,19 +101,3 @@ background-color: rgba(255, 210, 128, 0.3);
 
 `;
 
-export const Info = styled.ul`
-
-& li {
-    display: flex;
-    padding: 15px 20px 15px;
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: #F8F8F7;
-    border-radius: ${props => props.theme.borderRadiusMin};
-
-    &:last-child {
-       margin-bottom: 0; 
-    }
-
-}
-`;

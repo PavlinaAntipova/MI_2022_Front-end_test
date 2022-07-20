@@ -1,13 +1,18 @@
-import { Img, ImgBox } from "pages/style/VotingPage.styled";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, A11y, Mousewheel, Keyboard } from 'swiper';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getImgsByBreed } from "services/catsApi";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, A11y, Mousewheel, Keyboard } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+import { toast } from 'react-toastify';
+
+import { getImgsByBreed } from "services/catsApi";
+
 import { Feature, FeatureInfo, InfoBox, Item, List, Name, Text } from "./style/BreedInfoPage.styled";
+import { Img, ImgBox } from "pages/style/VotingPage.styled";
+
+import Loader from "components/Loader";
 
 export default function BreedInfoPage() {
     const location = useLocation();

@@ -24,11 +24,12 @@ export default function BreedInfoPage() {
             console.log(err.message);
             toast("🙀 Ooops, something went wrong! Try again.")
 
+        {isLoading ? <Loader/> : <>
     useEffect(() => {
         setIsLoading(true);
         getImgsByBreed(breed.id).then(data => {
             setImages(data);
-        }).finally(() => { setIsLoading(false) });
+                    <Img src={item.url} alt={breed.name} width="640" height="360" loading="lazy"/>
     }, []);
 
     return <>
@@ -44,6 +45,8 @@ export default function BreedInfoPage() {
 
         <InfoBox>
             <Name><nobr>{breed.name}</nobr></Name>
+            </>
+        }
             <Text>{breed.description}</Text>
             <List>
                 <Item><FeatureInfo><Feature>Temperament:</Feature><br/> {breed.temperament }</FeatureInfo></Item>

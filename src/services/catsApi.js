@@ -15,8 +15,8 @@ export const doVote = async (body) => {
   return response.data;
 };
 
-export const getVoting = async () => {
-    const response = await axios.get('/votes');
+export const getVoting = async (userId) => {
+    const response = await axios.get(`/votes?sub_id=${userId}`);
   return response.data;
 };
 
@@ -35,8 +35,8 @@ const response = await axios.delete(`/favourites/${id}`);
 return response.data;
 };
 
-export const getFavourite = async () => {
-    const response = await axios.get('/favourites');
+export const getFavourite = async (userId) => {
+    const response = await axios.get(`/favourites?sub_id=${userId}`);
   return response.data;
 };
 

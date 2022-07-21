@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import { toast } from "react-toastify";
 
+
 import LogItem from "components/LogItem";
 import Loader from "components/Loader";
 
@@ -15,7 +16,7 @@ import { ReactComponent as FavouriteFullIcon } from '../images/icons/fav-full.sv
 import { Btn, Controls, Img, Item, ImgBox, Wrapper } from "./style/VotingPage.styled";
 
 
-export default function VotingPage() {
+export default function VotingPage({ userId }) {
     const [randomCat, setRandomCat] = useState();
     const [isFavourite, setIsFavourite] = useState(false);
     const [isVoted, setIsVoted] = useState(false);
@@ -25,26 +26,23 @@ export default function VotingPage() {
     const [deletedFavourites, setDeletedFavourites] = useState([]);
     const [history, setHistory] = useState([]);
 
+
     useEffect(() => {
-         const getLocalStorage = JSON.parse(localStorage.getItem('deletedFavourites'));
-         if (getLocalStorage === null) {
+         const deletedFavouritesStorage = JSON.parse(localStorage.getItem('deletedFavourites'));
+         if (deletedFavouritesStorage === null) {
             setDeletedFavourites([]);
         } else {
-            setDeletedFavourites(getLocalStorage);
+            setDeletedFavourites(deletedFavouritesStorage);
          }
      }, []);
 
 
     useEffect(() => {
-       
-        setIsLoading(true);
         fetchData().then(data => {
             setHistory(createHistory(data, deletedFavourites)); setFavorites(data.favourite);
         }).catch(err => {
             console.log(err.message);
             toast("🙀 Ooops, something went wrong! Try again.");
-        }).finally(() => {
-            setIsLoading(false);
         });
     }, [isFavourite, isVoted, deletedFavourites]);
 
@@ -57,20 +55,34 @@ export default function VotingPage() {
     }, [isVoted]);
 
     async function fetchData() {
-    const favourite = await getFavourite();
-    const voting = await getVoting();
+    const favourite = await getFavourite(userId);
+    const voting = await getVoting(userId);
     return { favourite, voting };
     }
     
     function createHistory({ voting, favourite }, deleted) {
         const today = moment().get('date');
         const history = [...voting, ...favourite, ...deleted].filter(item => today === moment(item.created_at).get('date'));
-        history.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        history.sort((a, b) => {
+            if (a?.deleted_at && b?.deleted_at) {
+                return new Date(b.deleted_at) - new Date(a.deleted_at);
+            }
+            if (a?.deleted_at && !b?.deleted_at) {
+                return new Date(b.created_at) - new Date(a.deleted_at);
+            }
+            if (!a?.deleted_at && b?.deleted_at) {
+                return new Date(b.deleted_at) - new Date(a.created_at);
+            }
+            if (!a?.deleted_at && !b?.deleted_at) {
+                return new Date(b.created_at) - new Date(a.created_at);
+            }
+            
+        });
         return history;
     }
 
     const onVotingBtnClick = value => {
-        doVote({ image_id: randomCat?.id, value });
+        doVote({ image_id: randomCat?.id, value, sub_id: userId});
         setIsVoted(true);
     }
 
@@ -78,7 +90,6 @@ export default function VotingPage() {
         const cat = favorites.find(favorite => favorite.image_id === imgid);
         return cat;
     }
-
 
     return <div>
     
@@ -99,7 +110,7 @@ export default function VotingPage() {
                     <Btn type="button" onClick={() => {
                         if (isFavourite === false) {
                     
-                        makeFavourite({ image_id: randomCat.id }).then(() => {
+                        makeFavourite({ image_id: randomCat.id, sub_id: userId }).then(() => {
                             setIsFavourite(true);
                         });
                         }
@@ -108,8 +119,8 @@ export default function VotingPage() {
                             const deletedCat = findFavourite(randomCat?.id);
                             deleteFavourite(deletedCat.id).then(() => {
                                 setIsFavourite(false);
-                                localStorage.setItem('deletedFavourites', JSON.stringify([...deletedFavourites, { ...deletedCat, isDeleted: true }]));
-                                setDeletedFavourites([...deletedFavourites, { ...deletedCat, isDeleted: true }]);
+                                localStorage.setItem('deletedFavourites', JSON.stringify([...deletedFavourites, { ...deletedCat, isDeleted: true, deleted_at: new Date() }]));
+                                setDeletedFavourites([...deletedFavourites, { ...deletedCat, isDeleted: true, deleted_at: new Date() }]);
                             }).catch(err => {
                                 console.log(err.message);
                                 toast("🙀 Ooops, something went wrong! Try again.");

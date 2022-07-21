@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/compare/v0.1.2...v0.1.3) (2022-07-21)
+
+
+### Features
+
+* add adaptive style ([a261d11](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/a261d11ae6e192d17217983e5eba67e9a4f34477))
+* add dark theme ([b2a7ed7](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/b2a7ed747a10ff6c688f420ddbce8df79a6ad5c8))
+* add markup for dark theme ([d85d1ee](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/d85d1eedc936daf32331221fc0872071824d0b2b))
+* add Switcher for dark theme ([b4b2170](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/b4b2170a01453da0137e3ece5570a8186c0e9925))
+
+
+### Bug Fixes
+
+* add fetching by user id ([b8d735e](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/b8d735ea76d7ff8ab7d1612fbd3a0f9e09b79a54))
+* change loading chunks & add local storage for user id ([6b40d96](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/6b40d96ad40472103af8597b5d0a95fe573135b5))
+* fix voting process on Voting Page ([86813eb](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/86813eb5560e0e75aad08734126e2cfa1e07bee0))
+* remove Theme Provider from index.js ([9ced4c3](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/commit/9ced4c3bf4a4166c21f56dfcdcf8e3ccb171f8e3))
+
 ### [0.1.2](https://github.com/PavlinaAntipova/MI_2022_Front-end_test/compare/v0.1.1...v0.1.2) (2022-07-20)
 
 

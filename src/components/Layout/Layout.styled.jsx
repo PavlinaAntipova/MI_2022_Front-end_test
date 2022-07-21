@@ -79,6 +79,7 @@ width: 100%;
 padding: 20px;
 background-color: ${props => props.theme.common.mainContextBgColor};
 border-radius: ${props => props.theme.common.borderRadiusMax};
+min-height: 100vh;
 
 @media screen and (min-width: 1440px) {
 min-height: 840px;

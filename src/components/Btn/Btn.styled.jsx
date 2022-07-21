@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 export const BasicBtn = styled.button`
 padding: 10px;
-border-radius: ${props => props.theme.borderRadiusMin};
-background-color: ${props => props.style.bgColor.static};
+border-radius: ${props => props.theme.common.borderRadiusMin};
+background-color: ${props => props.theme.Button.staticBgColor};
 
 & svg {
-        fill: ${props => props.style.svgColor.static};
+        fill: ${props => props.theme.common.mainAccentColor};
     }
 
 
 &:hover, &:focus {
-    background-color: ${props => props.style.bgColor.active};
+    background-color: ${props => props.theme.common.mainAccentColor};
 
     & svg {
-        fill: ${props => props.style.svgColor.active};
+        fill: #fff;
     }
 }
 `;

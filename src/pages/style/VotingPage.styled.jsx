@@ -12,7 +12,7 @@ align-items: center;
 width: 100%;
 height: 360px;
 overflow: hidden;
-border-radius: ${props => props.theme.borderRadiusMax};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 `;
 
 export const Img = styled.img`
@@ -27,8 +27,8 @@ bottom: 0;
 left: 50%;
 transform: translate(-50%, 50%);
 display: inline-flex;
-border: 4px solid #FFFFFF;
-border-radius: ${props => props.theme.borderRadiusMax};
+border: ${props => props.theme.VotingPage.controlsBorder};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 background-color: #fff;
 overflow: hidden;
 `;
@@ -65,7 +65,7 @@ background-color: #97EAB9;
 }
 
 &:nth-child(2) {
-background-color:  ${props => props.theme.mainAccentColor};
+background-color:  ${props => props.theme.common.mainAccentColor};
 }
 
 &:nth-child(3) {
@@ -91,7 +91,7 @@ background-color: rgba(255, 210, 128, 0.3);
 }
 
 &:nth-child(2) ${Btn} svg {
-    fill:  ${props => props.theme.mainAccentColor};
+    fill:  ${props => props.theme.common.mainAccentColor};
 }
 
 &:nth-child(3) ${Btn} svg {

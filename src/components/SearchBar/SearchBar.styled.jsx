@@ -20,22 +20,24 @@ width: 100%;
 height: 100%;
 padding: 15px 20px;
 background: #FFFFFF;
-border-radius: ${props => props.theme.borderRadiusMax};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 border: none;
+background-color: ${props => props.theme.common.mainContextBgColor};
+color: ${props => props.theme.common.secondaryTextColor};
 
 &::placeholder {
 font-weight: 400;
 font-size: 20px;
 line-height: 1.45em;
-color: ${props => props.theme.lightTextColor};
+color: ${props => props.theme.common.secondaryTextColor};
 }
 
 &:focus {
-    outline: 2px solid ${props => props.theme.mainAccentColor};
+    outline: ${props => props.theme.SearchBar.outlineFocus};
 }
 
 &:hover {
-    outline: 2px solid ${props => props.theme.secondaryAccentColor};
+    outline: ${props => props.theme.SearchBar.outlineHover};
 
 }
 `;
@@ -47,8 +49,8 @@ display: flex;
 
 export const Item = styled.li`
 margin-right: 10px;
-background-color: #FFFFFF;
-border-radius: ${props => props.theme.borderRadiusMax};
+background-color: ${props => props.theme.common.mainContextBgColor};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 
 
 &:last-child {
@@ -61,18 +63,18 @@ padding: 15px;
     display: block;
     height: 100%;
     width: 100%;
-    border-radius: ${props => props.theme.borderRadiusMax};
+    border-radius: ${props => props.theme.common.borderRadiusMax};
 
     & svg {
-        fill: ${props => props.theme.mainAccentColor};
+        fill: ${props => props.theme.common.mainAccentColor};
     }
 
 &:hover, &:focus {
-        background-color: ${props => props.theme.secondaryAccentColor};
+        background-color: ${props => props.theme.common.secondaryAccentColor};
     }
 
  &.active {
-        background-color: ${props => props.theme.mainAccentColor};
+        background-color: ${props => props.theme.common.mainAccentColor};
 
          & svg {
         fill: #fff;

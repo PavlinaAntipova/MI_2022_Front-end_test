@@ -10,12 +10,13 @@ export const Select = styled.select`
 padding: 8px 10px;
 margin-right: 20px;
 background-color: #F8F8F7;
-border-radius: ${props => props.theme.borderRadiusMin};
+border-radius: ${props => props.theme.common.borderRadiusMin};
 font-size: 16px;
 line-height: 1.5em;
-color: ${props => props.theme.lightTextColor};
+color: ${props => props.theme.common.secondaryTextColor};
 outline: none;
-border: 2px solid  #F8F8F7;
+border: ${props => props.theme.BreedPage.border};
+background-color: ${props => props.theme.BreedPage.bgColor};
 cursor: pointer;
 
 &:last-of-type {
@@ -23,7 +24,7 @@ cursor: pointer;
 }
 
 &:hover, &:focus {
-   outline: 2px solid #FBE0DC;
+   outline: ${props => props.theme.BreedPage.outline};
 }
 `;
 
@@ -33,22 +34,23 @@ align-items: center;
 justify-content: center;
 padding: 10px;
 background-color: #F8F8F7;
-border-radius: ${props => props.theme.borderRadiusMin};
-border: 2px solid  #F8F8F7;
+border-radius: ${props => props.theme.common.borderRadiusMin};
+background-color: ${props => props.theme.BreedPage.bgColor};
+border: ${props => props.theme.BreedPage.border};
 
 &:first-of-type {
     margin-right: 10px;
 }
 
 & svg {
-        fill: ${props => props.theme.lightTextColor};
+        fill: ${props => props.theme.common.secondaryTextColor};
     }
 
 &:hover, &:focus {
-   border: 2px solid #FBE0DC;
+   border: ${props => props.theme.BreedPage.outline};
 
    & svg {
-    fill:  ${props => props.theme.mainAccentColor};
+    fill:  ${props => props.theme.common.mainAccentColor};
    }
 }
 `

@@ -4,7 +4,6 @@
 body {
 font-family: 'Jost', sans-serif;
 color: #1D1D1D;
-background-color: #E5E5E5;
 }
 
 ul, li, p, h1, h2, h3 {
@@ -33,14 +32,14 @@ button {
 }
 
 .swiper-pagination {
-    bottom: -5px !important;
+    bottom: -12px !important;
     left: 50% !important;
-    transform: translate(-50%, 5%) !important;
+    transform: translate(-50%, -5%) !important;
     padding: 10px;
-    background-color: #fff;
     border-radius: 20px;
     opacity: 1;
 }
+
 .swiper-pagination-bullet {
     width: 10px !important;
     height: 10px !important;

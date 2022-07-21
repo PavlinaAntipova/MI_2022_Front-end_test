@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
+
 export const InfoBox = styled.div`
 position: relative;
 padding: 40px;
 margin-top: 50px;
-border: 2px solid ${props => props.theme.secondaryAccentColor};
-border-radius: ${props => props.theme.borderRadiusMax};
+border: ${props => props.theme.BreedInfoPage.infoBoxBorder};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 `;
 
 export const List = styled.ul`
@@ -40,9 +41,10 @@ padding: 5px 40px;
 font-weight: 500;
 font-size: 36px;
 line-height: 1.44em;
-background-color: #fff;
-border-radius: ${props => props.theme.borderRadiusMax};
+background-color: ${props => props.theme.BreedInfoPage.nameBgColor};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 text-align: center;
+color: ${props => props.theme.common.mainTextColor};
 
 `;
 
@@ -52,17 +54,18 @@ font-weight: 500;
 font-size: 20px;
 line-height: 1.45em;
 text-align: center;
-color: ${props => props.theme.lightTextColor};
+color: ${props => props.theme.common.secondaryTextColor};
 `;
 
 
 export const FeatureInfo = styled.p`
 font-size: 16px;
 line-height: 1.44em;
-color: ${props => props.theme.lightTextColor};
+color: ${props => props.theme.common.secondaryTextColor};
 `;
 
 export const Feature = styled.span`
 font-weight: 500;
-color: ${props => props.theme.darkTextColor};
+color: ${props => props.theme.common.mainTextColor};
 `;
+

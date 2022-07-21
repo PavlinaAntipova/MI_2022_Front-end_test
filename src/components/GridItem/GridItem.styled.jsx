@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Item = styled.li`
 position: relative;
 background: #C4C4C4;
-border-radius: ${props => props.theme.borderRadiusMax};
+border-radius: ${props => props.theme.common.borderRadiusMax};
 height: 140px;
 overflow: hidden;
 
@@ -17,8 +17,8 @@ align-items: center;
 justify-content: center;
 width: 40px;
 height: 40px;
-background-color: #fff;
-border-radius: ${props => props.theme.borderRadiusMin};
+background-color: ${props => props.theme.GridItem.btnHoverBgColor};
+border-radius: ${props => props.theme.common.borderRadiusMin};
 opacity: 0;
 
 }
@@ -52,9 +52,9 @@ width: 90%;
 font-size: 16px;
 line-height: 1.5em;
 text-align: center;
-color: ${props => props.theme.mainAccentColor};
-background-color: #fff;
-border-radius: ${props => props.theme.borderRadiusMin};
+color: ${props => props.theme.common.mainAccentColor};
+background-color: ${props => props.theme.GridItem.btnHoverBgColor};
+border-radius: ${props => props.theme.common.borderRadiusMin};
 opacity: 0;
 }
 

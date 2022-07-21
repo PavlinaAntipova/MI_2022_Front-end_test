@@ -20,17 +20,17 @@ export default function LogItem({ item }) {
     }
 
     if (value === 1) return <Log>
-        <Text><Time>{moment(created_at).format('LT')}</Time>Image ID: <Id>{image_id}</Id> was added to Likes</Text>
+        <Time>{moment(created_at).format('LT')}</Time><Text>Image ID: <Id>{image_id}</Id> was added to Likes</Text>
         <LikeIcon fill="#97EAB9" width="20" height="20"/>
     </Log>
     
     if (value === 0) return <Log>
-        <Text><Time>{moment(created_at).format('LT')}</Time>Image ID: <Id>{image_id}</Id> was added to Dislikes</Text>
+        <Time>{moment(created_at).format('LT')}</Time><Text>Image ID: <Id>{image_id}</Id> was added to Dislikes</Text>
         <DislikeIcon fill="#FFD280" width="20" height="20"/>
     </Log>
     
     if (value === undefined) return <Log>
-        <Text><Time>{moment(created_at).format('LT')}</Time>Image ID: <Id>{image_id}</Id> was {getTypeOfFavourite(isDeleted)}</Text>
+        <Time>{moment(created_at).format('LT')}</Time><Text>Image ID: <Id>{image_id}</Id> was {getTypeOfFavourite(isDeleted)}</Text>
         {item?.isDeleted ? null : <FavoriteIcon fill={themeLight.common.mainAccentColor} width="20" height="20"/>}
     </Log>
 

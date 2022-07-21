@@ -5,17 +5,27 @@ import bgDark from '../../images/modal/upload-bg-dark.svg';
 
 export const Modal = styled.div`
 position: absolute;
-top: 30px;
-right: 30px;
-bottom: 30px;
+top: 0;
+right: 0;
+left: 0;
+bottom: 0;
 padding: 100px 20px;
-width: 680px;
 background-color: ${props => props.theme.Modal.bgColor};
-border-radius: ${props => props.theme.common.borderRadiusMax};
 overflow-y: scroll;
 text-align: center;
+
+@media screen and (min-width: 1440px) {
+top: 30px;
+right: 30px;
+bottom: 30px;  
+width: 680px; 
+border-radius: ${props => props.theme.common.borderRadiusMax};
+}
+
 `;
 export const CloseBtn = styled.button`
+width: 60px;
+height: 60px;
 position: absolute;
 top: 20px;
 right: 20px;
@@ -26,8 +36,21 @@ align-items: center;
 background-color: ${props => props.theme.Modal.closeBtnBgColor};
 border-radius: ${props => props.theme.common.borderRadiusMin};
 
+@media screen and (min-width: 1440px) {
+width: 40px;
+height: 40px;
+}
+
+
 & svg {
     fill: ${props => props.theme.common.mainAccentColor};
+    width: 25px;
+height: 25px;
+
+    @media screen and (min-width: 1440px) {
+width: 17px;
+height: 17px;
+}
 }
 
 &:hover, &:focus {
@@ -40,10 +63,15 @@ border-radius: ${props => props.theme.common.borderRadiusMin};
 
 export const Title = styled.h2`
 font-weight: 500;
-font-size: 36px;
-line-height: 1.44em;
+font-size: 20px;
+line-height: 1.45em;
 margin-bottom: 10px;
 color: ${props => props.theme.common.mainTextColor};
+
+ @media screen and (min-width: 1440px) {
+    font-size: 36px;
+line-height: 1.45em;
+ }
 `
 
 export const Text = styled.p`
@@ -59,13 +87,14 @@ margin-bottom: 40px;
 
 export const UploadArea = styled.div`
 position: relative;
-padding: 20px 40px;
+padding: 10px 20px;
 width: 100%;
-height: 320px;
+height: 170px;
 margin-bottom: 20px;
+border-radius: ${props => props.theme.common.borderRadiusMax};
 background-color: ${props => props.theme.Modal.uploadAreaBgColor};
 border: ${props => props.theme.Modal.uploadAreaBorder};
-border-radius: ${props => props.theme.common.borderRadiusMax};
+background-size: 100px 100px;
 
 ${props => {
     if (!props.isSelected) {
@@ -80,6 +109,12 @@ ${props => {
        
     }
 }}
+
+ @media screen and (min-width: 1440px) {
+    padding: 20px 40px;
+    height: 320px;
+    background-size: 200px 200px;
+ }
 
 
 ${props => {
@@ -148,6 +183,7 @@ border-radius: ${props => props.theme.common.borderRadiusMin};
 font-size: 16px;
 line-height: 1.5em;
 color: ${props => props.theme.common.secondaryTextColor};
+text-align: left;
 
 & svg {
     margin-right: 10px;
@@ -155,7 +191,7 @@ color: ${props => props.theme.common.secondaryTextColor};
 `;
 
 export const UploadBtn = styled.button`
-display: inline-flex;
+display: flex;
 align-items: center;
 justify-content: center;
 padding: 12px 30px;
@@ -167,6 +203,14 @@ color: #FFFFFF;
 text-transform: uppercase;
 background-color: ${props => props.theme.common.mainAccentColor};
 border-radius: ${props => props.theme.common.borderRadiusMin};
+
+@media screen and (max-width: 1439px) {
+width: 100%;
+}
+
+@media screen and (min-width: 1440px) {
+    display: inline-flex;
+}
 
 & svg {
     margin-right: 10px;

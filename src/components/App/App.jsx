@@ -43,7 +43,6 @@ export const App = () => {
     } else {
       theme === "dark" ? setDarkTheme(true) : setDarkTheme(false);
     }
-    
     getBreeds().then(setBreeds).catch(err => {
             console.log(err.message);
             toast("🙀 Ooops, something went wrong! Try again.");

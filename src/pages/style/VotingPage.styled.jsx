@@ -10,9 +10,17 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-height: 360px;
+height: 165px;
 overflow: hidden;
 border-radius: ${props => props.theme.common.borderRadiusMax};
+
+@media screen and (min-width: 768px) {
+    height: 375px;
+}
+
+@media screen and (min-width: 1440px) {
+     height: 360px;
+}
 `;
 
 export const Img = styled.img`
@@ -43,18 +51,31 @@ align-items: center;
 background-color: transparent;
 
 & svg {
+width: 20px;
+height: 20px;
     fill: #fff;
+
+    @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+}
 }
 `;
 
 
 export const Item = styled.li`
-width: 80px;
-height: 80px;
-margin-right: 4px;
+width: 60px;
+height: 60px;
+margin-right: 3px;
 display: flex;
 justify-content: center;
 align-items: center;
+
+@media screen and (min-width: 768px) {
+margin-right: 4px;
+width: 80px;
+height: 80px;
+}
 
 &:last-child {
   margin-right: 0;  

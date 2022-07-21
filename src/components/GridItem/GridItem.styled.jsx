@@ -2,10 +2,22 @@ import styled from "styled-components";
 
 export const Item = styled.li`
 position: relative;
-background: #C4C4C4;
+background-color: #C4C4C4;
 border-radius: ${props => props.theme.common.borderRadiusMax};
-height: 140px;
+height: 210px;
 overflow: hidden;
+
+@media screen and (max-width: 767px) {
+margin-bottom: 10px;
+
+&:last-child {
+   margin-bottom: 10px; 
+}
+}
+
+@media screen and (min-width: 1440px) {
+    height: 140px;
+}
 
 & button {
 position: absolute;
@@ -80,7 +92,7 @@ opacity: 0;
     height: 100%;
 }
 
-
+@media screen and (min-width: 1440px) {
 // 10n + 1
  ${props => {
 
@@ -179,7 +191,8 @@ ${props => {
                 }`;
             }
         }
-    }}
+}}
+}
     `;
 
 

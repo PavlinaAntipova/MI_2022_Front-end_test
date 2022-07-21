@@ -39,29 +39,40 @@ left: 50%;
 transform: translate(-50%, -50%);
 padding: 5px 40px;
 font-weight: 500;
-font-size: 36px;
+font-size: 26px;
 line-height: 1.44em;
 background-color: ${props => props.theme.BreedInfoPage.nameBgColor};
 border-radius: ${props => props.theme.common.borderRadiusMax};
 text-align: center;
 color: ${props => props.theme.common.mainTextColor};
 
+@media screen and (min-width: 1440px) {
+font-size: 36px;
+}
 `;
 
 export const Text = styled.p`
 margin-bottom: 20px;
 font-weight: 500;
-font-size: 20px;
+font-size: 16px;
 line-height: 1.45em;
 text-align: center;
 color: ${props => props.theme.common.secondaryTextColor};
+
+@media screen and (min-width: 1440px) {
+font-size: 20px;
+}
 `;
 
 
 export const FeatureInfo = styled.p`
-font-size: 16px;
+font-size: 12px;
 line-height: 1.44em;
 color: ${props => props.theme.common.secondaryTextColor};
+
+@media screen and (min-width: 1440px) {
+font-size: 16px;
+}
 `;
 
 export const Feature = styled.span`

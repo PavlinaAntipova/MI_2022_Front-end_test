@@ -5,16 +5,42 @@ import { BasicText } from "helper/Common.styled";
 
 
 export const StyledLayout = styled.div`
+padding: 20px;
+
+@media screen and (min-width: 768px) {
+padding: 30px;
+
+${props => {
+    if (props.location === "/") {
+        return `width: 60%;
+margin-left: auto;
+margin-right: auto;`;
+    } else {
+        return `width: 100%`;
+    } }};
+}
+
+@media screen and (max-width: 1439px) {
+display: flex;
+justify-content: center;
+padding: 30px;
+}
+
+@media screen and (min-width: 1440px) {
 padding: 30px 30px 30px 145px;
 display: flex;
+}
+
 `;
 
 export const IntroBox = styled.div`
+@media screen and (min-width: 1440px) {
 position: sticky;
 top: 30px;
 width: 40%;
 margin-right: 135px;
 height: 100%;
+}
 `;
 
 
@@ -24,6 +50,7 @@ margin-bottom: 80px;
 display: flex;
 justify-content: space-between;
 align-items: center;
+
 `;
 
 export const Title = styled.h1`
@@ -45,41 +72,32 @@ color: ${props => props.theme.common.mainTextColor};
 margin-bottom: 20px;
 `;
 
-export const List = styled.ul`
-display: flex;
-margin: -15px;
-`;
-
-export const Item = styled.li`
-margin: 15px;
-flex-basis: calc(100% / 3 - 30px);
-
-
-&:last-child {
-    margin-right: 0;
-}
-
-`;
 
 export const ContentBox = styled.div`
 position: relative;
+width: 100%;
+padding: 20px;
+background-color: ${props => props.theme.common.mainContextBgColor};
+border-radius: ${props => props.theme.common.borderRadiusMax};
+
+@media screen and (min-width: 1440px) {
 min-height: 840px;
+width: 680px;
+
 ${props => {
     if (props.location.pathname === "/") {
-            return `
+        return `
+            padding: 0;
             background-color: ${props.theme.HomePage.contentBgColor};
             `;
     } else {
         return `
             padding: 20px;
-            background-color:${props.theme.common.mainContextBgColor};
             `;
         }
 }
     };
-
-width: 680px;
-border-radius: ${props => props.theme.common.borderRadiusMax};
+}
 `;
 
 export const MainContent = styled.div`
@@ -105,18 +123,48 @@ line-height: 1.5em;
 letter-spacing: 2px;
 color: #FFFFFF;
 text-transform: uppercase;
+text-align: center;
 
 &:first-of-type {
 ${props => {
         if (props.location) {
             return `
-            margin-right: 10px;
+            margin-bottom: 10px;
             color: ${props.theme.common.mainAccentColor};
-       background-color: ${props.theme.PreviousLocationBtn.bgColor};
+            background-color: ${props.theme.PreviousLocationBtn.bgColor};
         `
         }
     }}
-}`;
+}
+
+@media screen and (max-width: 1439px) {
+&:last-of-type {
+    ${props => {
+        if (props.location) {
+            return `
+            position: relative;
+            left: 50px;
+            width: 130px;
+        `
+        }
+    }}
+}
+}
+
+@media screen and (min-width: 1440px) {
+    display: inline-block;
+    &:first-of-type {
+${props => {
+        if (props.location) {
+            return `
+            margin-bottom: 0;
+            margin-right: 10px;
+        `
+        }
+    }}
+}
+}
+`;
 
 
 

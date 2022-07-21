@@ -6,7 +6,7 @@ import { ReactComponent as FavoriteIcon } from '../../images/icons/fav.svg';
 import { ReactComponent as DislikeIcon } from '../../images/icons/dislike.svg';
 
 import { Id, Log, Text, Time } from './LogItem.styled';
-import { theme } from 'helper/theme';
+import { themeLight } from 'helper/theme';
 
 export default function LogItem({ item }) {
     const { image_id, value = undefined, created_at, isDeleted = undefined } = item;
@@ -31,7 +31,7 @@ export default function LogItem({ item }) {
     
     if (value === undefined) return <Log>
         <Text><Time>{moment(created_at).format('LT')}</Time>Image ID: <Id>{image_id}</Id> was {getTypeOfFavourite(isDeleted)}</Text>
-        {item?.isDeleted ? null : <FavoriteIcon fill={theme.mainAccentColor} width="20" height="20"/>}
+        {item?.isDeleted ? null : <FavoriteIcon fill={themeLight.common.mainAccentColor} width="20" height="20"/>}
     </Log>
 
     } 

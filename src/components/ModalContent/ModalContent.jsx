@@ -9,7 +9,7 @@ import { CloseBtn, Modal, UploadAvailability, UploadStatus, Text, Title, UploadA
 
 import { uploadImage } from 'services/catsApi';
 
-export default function ModalContent({toggleModal}) {
+export default function ModalContent({toggleModal, isDarkTheme}) {
     const [isSelected, setIsSelected] = useState(false);
     const [isUpload, setIsUpload] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
@@ -61,7 +61,7 @@ export default function ModalContent({toggleModal}) {
 
         }}>
             
-            <UploadArea isUpload={isUpload} isSelected={isSelected}>
+            <UploadArea isUpload={isUpload} isSelected={isSelected} isDarkTheme={isDarkTheme}>
                
                 {isSelected ? <ImgBox><img src={preview} alt="cat" /> </ImgBox> :  <UploadText><span>Drag here</span> your file or <span>Click here</span> to upload</UploadText>}
                 <input type="file" onChange={handleChange} accept="image/png, image/jpg"/>

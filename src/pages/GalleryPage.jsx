@@ -17,10 +17,10 @@ import { ReactComponent as FullFavIcon } from '../images/icons/fav-full.svg';
 import { BtnBox, Form, Label, Select, UpdateBtn, UploadBtn } from "./style/GalleryPage.styled";
 
 import { gridRows } from "helper/styleHelper";
-import { theme } from "helper/theme";
+import { themeLight } from "helper/theme";
 
 
-export default function GalleryPage({breeds}) {
+export default function GalleryPage({breeds, userId, isDarkTheme }) {
     const [gallery, setGallery] = useState([]);
     const [order, setOrder] = useState();
     const [breed, setBreed] = useState();
@@ -47,7 +47,7 @@ export default function GalleryPage({breeds}) {
     
     
         async function fetchFavoriteData() {
-          const allFavouriteData = await getFavourite();
+          const allFavouriteData = await getFavourite(userId);
             setFavourite(allFavouriteData);
             return allFavouriteData;
         }
@@ -89,7 +89,8 @@ export default function GalleryPage({breeds}) {
         const itemId = e.currentTarget.dataset.id;
         
         if (isActiveBtn(itemId) === false) {
-            makeFavourite({ image_id: itemId }).then(() => {
+            
+            makeFavourite({ image_id: itemId, sub_id: userId }).then(() => {
                 fetchFavoriteData().catch(err => {
                     console.log(err.message);
                     toast("🙀 Ooops, something went wrong! Try again.");
@@ -99,16 +100,18 @@ export default function GalleryPage({breeds}) {
                     toast("🙀 Ooops, something went wrong! Try again.");
                 });
         } else {
-             
+            
             const id = findDeletedItem(itemId).id;
-            deleteFavourite(id).catch(err => {
-                console.log(err.message);
-                toast("🙀 Ooops, something went wrong! Try again.");
-            });
+            deleteFavourite(id).then(() => {
                 fetchFavoriteData().catch(err => {
                     console.log(err.message);
                     toast("🙀 Ooops, something went wrong! Try again.");
                 });
+            }).catch(err => {
+                    console.log(err.message);
+                    toast("🙀 Ooops, something went wrong! Try again.");
+                });
+                
         }
 
     }
@@ -165,13 +168,13 @@ export default function GalleryPage({breeds}) {
                 return <GridItem index={index} key={index} amountData={gallery.length} gridRows={gridRows}>
                     <div></div>
                     <button data-id={item.id} type="button" onClick={handleClick}>
-                         {isActiveBtn(item.id) ? <FullFavIcon width="20" height="20" fill={theme.mainAccentColor}/> : <FavIcon fill={theme.mainAccentColor} />}
+                         {isActiveBtn(item.id) ? <FullFavIcon width="20" height="20" fill={themeLight.common.mainAccentColor}/> : <FavIcon fill={themeLight.common.mainAccentColor} width="20" height="20" />}
                         </button>
                         <img src={item?.url ? item.url : "https://cdn.pixabay.com/photo/2016/03/17/06/49/renovation-1262389_1280.png"} alt="cat" loading="lazy"/>
                     
                 </GridItem>
             })}
         </GridContainer>}
-        {showModal && <ModalUpload toggleModal={toggleModal}><ModalContent toggleModal={toggleModal} /></ModalUpload>}
+        {showModal && <ModalUpload toggleModal={toggleModal}><ModalContent toggleModal={toggleModal} isDarkTheme={isDarkTheme} /></ModalUpload>}
     </>
 }

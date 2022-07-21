@@ -15,10 +15,10 @@ import { ReactComponent as FullFavIcon } from '../images/icons/fav-full.svg';
 import { NotFoundText } from "./style/RatingPage.styled";
 import { Info } from "./style/RatingPage.styled";
 
-import { theme } from "helper/theme";
+import { themeLight } from "helper/theme";
 import { gridRows } from "helper/styleHelper";
 
-export default function RatingPage() {
+export default function RatingPage({ userId }) {
     const [favourite, setFavourite] = useState([]);
     const [likes, setLikes] = useState([]);
     const [dislikes, setDislikes] = useState([]);
@@ -65,7 +65,7 @@ export default function RatingPage() {
         }
 
         async function fetchVotingData() {
-            const allVoltingData = await getVoting();
+            const allVoltingData = await getVoting(userId);
             const votingDataLikes = await likesCats(allVoltingData);
             const votingDataDislikes = await dislikesCats(allVoltingData);
             setLikes(votingDataLikes);
@@ -73,14 +73,14 @@ export default function RatingPage() {
         }
         
         async function fetchFavoriteData() {
-          const allFavouriteData = await getFavourite();
+          const allFavouriteData = await getFavourite(userId);
             setFavourite(allFavouriteData);
             return allFavouriteData;
         }
 
         async function fetchAllCatsImages() {
             const images = {};
-            const allVoltingData = await getVoting();
+            const allVoltingData = await getVoting(userId);
             allVoltingData.forEach(item => {
                 images[item.image_id] = "";
             });
@@ -143,7 +143,7 @@ export default function RatingPage() {
                                 <GridItem index={index} key={item.id} amountData={favourite.length} gridRows={gridRows}>
                                      <div></div>
                                     <button data-id={item.id} type="button" onClick={handleClick}>
-                                    {isActiveBtn(item.id) ? <FullFavIcon width="20" height="20" fill={theme.mainAccentColor}/> : <FavIcon fill={theme.mainAccentColor} />}
+                                    {isActiveBtn(item.id) ? <FullFavIcon width="20" height="20" fill={themeLight.common.mainAccentColor}/> : <FavIcon fill={themeLight.common.mainAccentColor} />}
                                     </button>
                                     <img src={item.image?.url} alt="cat" loading="lazy"/>
                                 </GridItem>)}
@@ -160,7 +160,7 @@ export default function RatingPage() {
                     </GridContainer>
                 }
 
-                {(location === "/dislikes" && !likes.length) ? <NotFoundText>No item found</NotFoundText> :
+                {(location === "/dislikes" && !dislikes.length) ? <NotFoundText>No item found</NotFoundText> :
                     <GridContainer>
                         {(location === "/dislikes" && dislikes.length > 0) && dislikes.map((item, index) => <GridItem index={index} key={item.id} amountData={dislikes.length} gridRows={gridRows}><img src={images[item.image_id]} alt="cat" loading="lazy"/></GridItem>)}
                     </GridContainer>

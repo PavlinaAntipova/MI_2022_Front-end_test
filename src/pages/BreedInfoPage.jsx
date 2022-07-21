@@ -9,17 +9,19 @@ import { toast } from 'react-toastify';
 
 import { getImgsByBreed } from "services/catsApi";
 
-import { Feature, FeatureInfo, InfoBox, Item, List, Name, Text } from "./style/BreedInfoPage.styled";
+import { Feature, FeatureInfo, InfoBox, Item, List, Name, StyledPagination, Text } from "./style/BreedInfoPage.styled";
 import { Img, ImgBox } from "pages/style/VotingPage.styled";
 
 import Loader from "components/Loader";
 
-export default function BreedInfoPage() {
+
+
+export default function BreedInfoPage({isDarkTheme}) {
     const location = useLocation();
     const breed = location.state;
     const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+   
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,11 +31,12 @@ export default function BreedInfoPage() {
             console.log(err.message);
             toast("🙀 Ooops, something went wrong! Try again.")
         }).finally(() => { setIsLoading(false) });
+        
+        
     }, []);
 
     return <>
         {isLoading ? <Loader/> : <>
-
         <Swiper slidesPerView={1} modules={[Pagination, A11y, Mousewheel, Keyboard]} pagination={{ clickable: true}} mousewheel={true} keyboard={true} loop={true}>
             {images.map(item => <SwiperSlide key={item.id}>
                 <ImgBox>

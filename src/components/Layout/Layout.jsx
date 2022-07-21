@@ -4,7 +4,8 @@ import { createBrowserHistory } from "history";
 import SearchBar from "components/SearchBar/SearchBar";
 import NavigationBtn from "components/NavigationBtn";
 
-import { ReactComponent as Logo } from '../../images/icons/logo.svg';
+import { ReactComponent as LogoLight } from '../../images/icons/logo-light.svg';
+import { ReactComponent as LogoDark } from '../../images/icons/logo-dark.svg';
 import { ReactComponent as BackIcon } from '../../images/icons/back.svg';
 
 import VotingImg from '../../images/vote-table/vote-table.png';
@@ -13,10 +14,10 @@ import GalleryImg from '../../images/images-search/images-search.png';
 
 import { Description, Header, Item, List, StyledLayout, Text, Title, IntroBox, ContentBox, MainContent, BackBtnBox, BackBtn, CurrentLocation } from "./Layout.styled";
 
-import { theme } from "helper/theme";
+import SwitcherThemeBtn from "components/SwitcherThemeBtn";
 
 
-export default function Layout({setSearchQuery}) {
+export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
     const location = useLocation();
     const param = useParams();
 
@@ -33,7 +34,8 @@ export default function Layout({setSearchQuery}) {
     return <><StyledLayout>
         <IntroBox>
         <Header>
-            <Link to='/'><Logo /></Link>
+                <Link to='/'>{isDarkTheme ? <LogoDark /> : <LogoLight />}</Link>
+                <SwitcherThemeBtn setDarkTheme={setDarkTheme} isDarkTheme={isDarkTheme} />
         </Header>
         
             <Title>Hi intern!</Title>
@@ -50,9 +52,7 @@ export default function Layout({setSearchQuery}) {
         {location?.pathname !== "/" && <SearchBar setSearchQuery={setSearchQuery} />}
             <ContentBox location={location}>
                 {location?.pathname !== "/" && <BackBtnBox>
-                    <BackBtn onClick={() => { history.back() }} type="button" style={
-                        { bgColor: { static: theme.secondaryAccentColor, active: theme.mainAccentColor }, svgColor: { static: theme.mainAccentColor, active: "#fff" } }
-                    }><BackIcon /></BackBtn>
+                    <BackBtn onClick={() => { history.back() }} type="button"><BackIcon /></BackBtn>
                     <CurrentLocation location={param.breedId}>{param.breedId ? getLocation() : location?.pathname.slice(1)}</CurrentLocation>
                     {param.breedId && <CurrentLocation>{param.breedId}</CurrentLocation>}
                     

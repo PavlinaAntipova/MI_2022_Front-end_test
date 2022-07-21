@@ -22,7 +22,7 @@ margin-right: auto;`;
 
 @media screen and (max-width: 1439px) {
 display: flex;
-justify-content: center;
+flex-direction: column;
 padding: 30px;
 }
 
@@ -51,6 +51,16 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 
+@media screen and (max-width: 1439px) {
+    ${props => {
+    if (props.location !== "/") {
+        return `margin-bottom: 20px;`;
+    }
+    }}
+}
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+width: 680px;
+}
 `;
 
 export const Title = styled.h1`
@@ -81,6 +91,7 @@ background-color: ${props => props.theme.common.mainContextBgColor};
 border-radius: ${props => props.theme.common.borderRadiusMax};
 min-height: 100vh;
 
+
 @media screen and (min-width: 1440px) {
 min-height: 840px;
 width: 680px;
@@ -102,6 +113,10 @@ ${props => {
 `;
 
 export const MainContent = styled.div`
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+width: 680px;
+margin: 0 auto;
+}
 `;
 
 export const BackBtnBox = styled.div`

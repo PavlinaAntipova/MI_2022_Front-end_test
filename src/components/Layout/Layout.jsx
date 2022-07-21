@@ -67,7 +67,7 @@ export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
             </MainContent>
         </> : <>
                 {location?.pathname === "/" ?  <IntroBox>
-                <Header>
+                <Header location={location?.pathname}>
                     <Link to='/'>{isDarkTheme ? <LogoDark /> : <LogoLight />}</Link>
                     <SwitcherThemeBtn setDarkTheme={setDarkTheme} isDarkTheme={isDarkTheme} />
                 </Header>
@@ -76,7 +76,11 @@ export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
                 <Description>Welcome to MI 2022 Front-end test</Description>
                 <Text>Lets start using The Cat API</Text>
                 <Navigation/>
-            </IntroBox> : <MainContent>
+            </IntroBox> : <> <Header>
+                    <Link to='/'>{isDarkTheme ? <LogoDark /> : <LogoLight />}</Link>
+                    <SwitcherThemeBtn setDarkTheme={setDarkTheme} isDarkTheme={isDarkTheme} />
+                    </Header>
+                        <MainContent>
                         {location?.pathname !== "/" && <SearchBar setSearchQuery={setSearchQuery} toggleMobileMenu={toggleMobileMenu} />}
                 <ContentBox location={location}>
                     {location?.pathname !== "/" && <BackBtnBox>
@@ -88,7 +92,8 @@ export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
                 
                     <Outlet />
                 </ContentBox>
-                </MainContent>}
+                        </MainContent>
+                </>}
                 {showMobileMenu && <MobileMenu toggleMobileMenu={toggleMobileMenu}/>}
         </>
         }

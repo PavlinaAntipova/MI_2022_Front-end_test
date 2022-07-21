@@ -19,8 +19,13 @@ export default function MobileMenu({ toggleMobileMenu }) {
     window.scrollTo(0,0);
   }
     
-    return <StyledMobileMenu>
-        <CloseBtn onClick={() => toggleMobileMenu()}><CloseIcon /></CloseBtn>
+  return <StyledMobileMenu onClick={e => {
+    if (e.target !== e.currentTarget) {
+      toggleMobileMenu();
+    }
+
+    }}>
+        <CloseBtn><CloseIcon /></CloseBtn>
         <Navigation />
     </StyledMobileMenu>
  }

@@ -139,10 +139,10 @@ export default function VotingPage({ userId }) {
         </Controls>
         </Wrapper>
 
-        {isLoading ? null : <ul>
+         <ul>
             {history && history.map(item => <LogItem key={item.id} item={item} />
             )}
-        </ul>}
+        </ul>
         
                
         

@@ -152,13 +152,12 @@ ${props => {
 }
 
 @media screen and (min-width: 1440px) {
-    display: inline-block;
+    margin-right: 10px;
     &:first-of-type {
 ${props => {
         if (props.location) {
             return `
             margin-bottom: 0;
-            margin-right: 10px;
         `
         }
     }}

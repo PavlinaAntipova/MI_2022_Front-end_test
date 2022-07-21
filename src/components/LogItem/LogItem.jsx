@@ -9,7 +9,7 @@ import { Id, Log, Text, Time } from './LogItem.styled';
 import { themeLight } from 'helper/theme';
 
 export default function LogItem({ item }) {
-    const { image_id, value = undefined, created_at, isDeleted = undefined } = item;
+    const { image_id, value = undefined, created_at, isDeleted = undefined, deleted_at } = item;
 
     const getTypeOfFavourite = isDeleted => {
             
@@ -30,7 +30,7 @@ export default function LogItem({ item }) {
     </Log>
     
     if (value === undefined) return <Log>
-        <Time>{moment(created_at).format('LT')}</Time><Text>Image ID: <Id>{image_id}</Id> was {getTypeOfFavourite(isDeleted)}</Text>
+        <Time>{isDeleted ? moment(deleted_at).format('LT') : moment(created_at).format('LT')}</Time><Text>Image ID: <Id>{image_id}</Id> was {getTypeOfFavourite(isDeleted)}</Text>
         {item?.isDeleted ? null : <FavoriteIcon fill={themeLight.common.mainAccentColor} width="20" height="20"/>}
     </Log>
 

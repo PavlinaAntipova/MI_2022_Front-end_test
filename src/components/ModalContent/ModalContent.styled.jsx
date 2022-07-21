@@ -7,12 +7,15 @@ export const Modal = styled.div`
 position: absolute;
 top: 0;
 right: 0;
-left: 0;
 bottom: 0;
 padding: 100px 20px;
 background-color: ${props => props.theme.Modal.bgColor};
 overflow-y: scroll;
 text-align: center;
+
+@media screen and (max-width: 1439px) {
+left: 0;
+}
 
 @media screen and (min-width: 1440px) {
 top: 30px;

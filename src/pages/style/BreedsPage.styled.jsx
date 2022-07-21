@@ -35,12 +35,9 @@ cursor: pointer;
 
 
 @media screen and (min-width: 1440px) {
-margin-right: 20px;
+margin-right: 10px;
 
-&:last-of-type {
-    margin-right: 10px;
 }
-} */
 
 
 &:hover, &:focus {
@@ -57,7 +54,6 @@ border-radius: ${props => props.theme.common.borderRadiusMin};
 background-color: ${props => props.theme.BreedPage.bgColor};
 border: ${props => props.theme.BreedPage.border};
 
-
 & svg {
         fill: ${props => props.theme.common.secondaryTextColor};
     }
@@ -68,5 +64,12 @@ border: ${props => props.theme.BreedPage.border};
    & svg {
     fill:  ${props => props.theme.common.mainAccentColor};
    }
+}
+
+@media screen and (min-width: 1440px) {
+    &:first-of-type {
+        margin-right: 10px;
+    }
+    
 }
 `

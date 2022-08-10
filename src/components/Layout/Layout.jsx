@@ -4,7 +4,6 @@ import { createBrowserHistory } from "history";
 import { useMediaQuery } from 'react-responsive';
 
 import SearchBar from "components/SearchBar/SearchBar";
-import NavigationBtn from "components/NavigationBtn";
 
 import { ReactComponent as LogoLight } from '../../images/icons/logo-light.svg';
 import { ReactComponent as LogoDark } from '../../images/icons/logo-dark.svg';
@@ -46,9 +45,9 @@ export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
                     <SwitcherThemeBtn setDarkTheme={setDarkTheme} isDarkTheme={isDarkTheme} />
                 </Header>
         
-                <Title>Hi intern!</Title>
-                <Description>Welcome to MI 2022 Front-end test</Description>
-                <Text>Lets start using The Cat API</Text>
+               <Title>Hi there!</Title>
+                <Description>Welcome to Cats World.</Description>
+                <Text>Lets start!</Text>
                 <Navigation/>
             </IntroBox>
 
@@ -72,9 +71,9 @@ export default function Layout({setSearchQuery, setDarkTheme, isDarkTheme}) {
                     <SwitcherThemeBtn setDarkTheme={setDarkTheme} isDarkTheme={isDarkTheme} />
                 </Header>
         
-                <Title>Hi intern!</Title>
-                <Description>Welcome to MI 2022 Front-end test</Description>
-                <Text>Lets start using The Cat API</Text>
+                <Title>Hi there!</Title>
+                <Description>Welcome to Cats World.</Description>
+                <Text>Lets start!</Text>
                 <Navigation/>
             </IntroBox> : <> <Header>
                     <Link to='/'>{isDarkTheme ? <LogoDark /> : <LogoLight />}</Link>
